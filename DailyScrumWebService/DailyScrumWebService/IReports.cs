@@ -15,6 +15,9 @@ namespace DailyScrumWebService
         ModelViews.ViewReport[] Get(string Username, int count = 10, int skip = 0);
 
         [OperationContract]
+        ModelViews.ViewReport GetSingle(string Username, int ReportID);
+        
+        [OperationContract]
         void Submit(string Title, string Description, DateTime Submit, int ProjectId, string Username);
     }
 }

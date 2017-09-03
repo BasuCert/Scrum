@@ -26,6 +26,21 @@ namespace DailyScrumWebService
             );
             db.SaveChanges();
         }
+        public ModelViews.ViewReport GetSingle(string Username, int ReportID)
+        {
+            return db.Reports.Where(x => x.Id == ReportID).Select(x =>
+             new ModelViews.ViewReport
+             {
+                 Id = x.Id,
+                 Description = x.Description,
+                 Submit = x.Submit,
+                 Username = x.Username,
+                 Title = x.Title,
+                 ProjectId = x.ProjectId
+
+             }
+            ).FirstOrDefault();
+        }
         public ModelViews.ViewReport[] Get(string Username, int count = 10, int skip = 0)
         {
             var current_user = db.Users.Where(c => c.Username == Username).FirstOrDefault();
@@ -53,7 +68,7 @@ namespace DailyScrumWebService
             {
                 var query = flat
                 .Where(x => x.user.Username == current_user.Username || x.project.Id == current_user.RelatedProjectId)
-                .Select(y =>new ModelViews.ViewReport { Id = y.report.Id, Description = y.report.Description, Submit = y.report.Submit, Username = y.report.Username, Title = y.report.Title, ProjectId  = y.report.ProjectId})
+                .Select(y => new ModelViews.ViewReport { Id = y.report.Id, Description = y.report.Description, Submit = y.report.Submit, Username = y.report.Username, Title = y.report.Title, ProjectId = y.report.ProjectId })
                 .OrderByDescending(x => x.Submit)
                 .Skip(skip)
                 .Take(count)
