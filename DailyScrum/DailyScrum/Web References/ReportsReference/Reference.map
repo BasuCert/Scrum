@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://192.168.42.35/Reports.svc?xsd=xsd1" filename="Reports.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://192.168.42.35/Reports.svc?disco" filename="Reports.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://192.168.42.35/Reports.svc?xsd=xsd0" filename="Reports0.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://192.168.42.35/Reports.svc?wsdl" filename="Reports.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://192.168.42.35/Reports.svc?xsd=xsd2" filename="Reports1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://scrum.gordarg.com/Reports.svc?xsd=xsd1" filename="Reports.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://scrum.gordarg.com/Reports.svc?xsd=xsd2" filename="Reports0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://scrum.gordarg.com/Reports.svc?wsdl" filename="Reports.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://scrum.gordarg.com/Reports.svc?xsd=xsd0" filename="Reports1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://scrum.gordarg.com/Reports.svc?disco" filename="Reports.disco" />
   </Results>
 </DiscoveryClientResultsFile>

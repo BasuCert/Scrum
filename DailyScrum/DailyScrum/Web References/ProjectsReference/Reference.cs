@@ -35,7 +35,7 @@ namespace DailyScrum.ProjectsReference {
         
         /// <remarks/>
         public Projects() {
-            this.Url = "http://192.168.42.35/Projects.svc";
+            this.Url = "http://scrum.gordarg.com/Projects.svc";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -31,13 +31,15 @@ namespace DailyScrum.ReportsReference {
         
         private System.Threading.SendOrPostCallback GetOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetSingleOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SubmitOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public Reports() {
-            this.Url = "http://192.168.42.35/Reports.svc";
+            this.Url = "http://scrum.gordarg.com/Reports.svc";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -73,6 +75,9 @@ namespace DailyScrum.ReportsReference {
         
         /// <remarks/>
         public event GetCompletedEventHandler GetCompleted;
+        
+        /// <remarks/>
+        public event GetSingleCompletedEventHandler GetSingleCompleted;
         
         /// <remarks/>
         public event SubmitCompletedEventHandler SubmitCompleted;
@@ -113,6 +118,40 @@ namespace DailyScrum.ReportsReference {
             if ((this.GetCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetCompleted(this, new GetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IReports/GetSingle", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ViewReport GetSingle([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Username, int ReportID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ReportIDSpecified) {
+            object[] results = this.Invoke("GetSingle", new object[] {
+                        Username,
+                        ReportID,
+                        ReportIDSpecified});
+            return ((ViewReport)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSingleAsync(string Username, int ReportID, bool ReportIDSpecified) {
+            this.GetSingleAsync(Username, ReportID, ReportIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void GetSingleAsync(string Username, int ReportID, bool ReportIDSpecified, object userState) {
+            if ((this.GetSingleOperationCompleted == null)) {
+                this.GetSingleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSingleOperationCompleted);
+            }
+            this.InvokeAsync("GetSingle", new object[] {
+                        Username,
+                        ReportID,
+                        ReportIDSpecified}, this.GetSingleOperationCompleted, userState);
+        }
+        
+        private void OnGetSingleOperationCompleted(object arg) {
+            if ((this.GetSingleCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSingleCompleted(this, new GetSingleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -320,6 +359,32 @@ namespace DailyScrum.ReportsReference {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ViewReport[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void GetSingleCompletedEventHandler(object sender, GetSingleCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSingleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSingleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ViewReport Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ViewReport)(this.results[0]));
             }
         }
     }

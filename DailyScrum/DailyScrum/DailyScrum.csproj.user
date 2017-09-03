@@ -3,5 +3,7 @@
   <PropertyGroup>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
     <AndroidDesignerPreferredTheme>Theme.DeviceDefault</AndroidDesignerPreferredTheme>
+    <SelectedDevice>Meizu PRO 6</SelectedDevice>
+    <DefaultDevice>Rexa1</DefaultDevice>
   </PropertyGroup>
 </Project>
